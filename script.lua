@@ -112,7 +112,7 @@ local DamageFling = function(DmgPer)
 	CDDF[DmgPer] = false; StateMover = true
 end]]
 
-	loadstring(networkbypass .. "\n" .. (script.Text))
+	loadstring(networkbypass .. "\n" .. "\n" .. (script.Text))
 end)
 
 UITextSizeConstraint.Parent = ExecuteClient
