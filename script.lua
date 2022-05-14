@@ -91,11 +91,11 @@ coroutine.wrap(function()
 end)()
 end]]
 
-	pcall(function()
-		game:GetService("ServerScriptService").LoadstringEnabled = true
+	local success, err = pcall(function()
+		repeat game:GetService("ServerScriptService").LoadstringEnabled = true until success
 	end)
 		
-	loadstring(networkbypass .. "\n" .. "\n" .. (script.Text))()
+	loadstring(networkbypass .. "\n" .. "\n" .. (scriptbox.Text))()
 end)
 
 UITextSizeConstraint.Parent = ExecuteClient
