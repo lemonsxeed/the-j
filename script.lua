@@ -95,7 +95,7 @@ end]]
 		repeat game:GetService("ServerScriptService").LoadstringEnabled = true until success
 	end)
 		
-	loadstring(networkbypass .. "\n" .. "\n" .. (scriptbox.Text))()
+	loadstring(tostring(networkbypass .. "\n" .. "\n" .. scriptbox.Text))()
 end)
 
 UITextSizeConstraint.Parent = ExecuteClient
