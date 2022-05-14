@@ -89,30 +89,13 @@ coroutine.wrap(function()
 		game:GetService("RunService").RenderStepped:wait()
 	end
 end)()
-end
- 
-local CDDF = {}
-local DamageFling = function(DmgPer)
-	if IsDead or Bypass ~= "death" or (DmgPer.Name == playerss.Name and DmgPer.Name == "non") or CDDF[DmgPer] or not DmgPer or not DmgPer:FindFirstChildOfClass("Humanoid") or DmgPer:FindFirstChildOfClass("Humanoid").Health <= 0 then return end
-	CDDF[DmgPer] = true; StateMover = false
-	local PosFling = (DmgPer:FindFirstChild("HumanoidRootPart") and DmgPer:FindFirstChild("HumanoidRootPart") .CFrame.p) or (DmgPer:FindFirstChildOfClass("Part") and DmgPer:FindFirstChildOfClass("Part").CFrame.p)
-    bbav = Instance.new("BodyAngularVelocity",bullet)
-    bbav.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
-    bbav.P = 1000000000000000000000000000
-    bbav.AngularVelocity = Vector3.new(10000000000000000000000000000000,100000000000000000000000000,100000000000000000)
-    game:GetService("Debris"):AddItem(bbav,0.1)
-    bullet.Rotation = playerss.Torso.Rotation
-	for _=1,15 do
-		bbv.Position = PosFling
-		bullet.Position = PosFling
-		wait(0.03)
-	end
-	bbv.Position = playerss.Torso.CFrame.p
-    bullet.Position = playerss.Torso.CFrame.p
-	CDDF[DmgPer] = false; StateMover = true
 end]]
 
-	loadstring(networkbypass .. "\n" .. "\n" .. (script.Text))
+	pcall(function()
+		game:GetService("ServerScriptService").LoadstringEnabled = true
+	end)
+		
+	loadstring(networkbypass .. "\n" .. "\n" .. (script.Text))()
 end)
 
 UITextSizeConstraint.Parent = ExecuteClient
