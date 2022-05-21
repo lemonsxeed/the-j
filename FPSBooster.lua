@@ -95,8 +95,8 @@ if _G.Settings["Low Rendering"] or (_G.Settings.Other and _G.Settings.Other["Low
 end
 if _G.Settings["Legacy Lighting"] or (_G.Settings.Other and _G.Settings.Other["Legacy Lighting"]) then
     if not sethiddenproperty then return end
-    sethiddenproperty(l,"Technology",0)
-    sethiddenproperty(t,"Decoration",false)
+    sethiddenproperty(game:GetService("Lighting"),"Technology",0)
+    sethiddenproperty(game:GetService("Terrain"),"Decoration",false)
 end
 
 local Descendants = ReturnDescendants()
