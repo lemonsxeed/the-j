@@ -94,6 +94,7 @@ if _G.Settings["Low Rendering"] or (_G.Settings.Other and _G.Settings.Other["Low
     settings().Rendering.QualityLevel = 1
 end
 if _G.Settings["Compatibility Lighting"] or (_G.Settings.Other and _G.Settings.Other["Compatibility Lighting"]) then
+    if not sethiddenproperty then return end
     sethiddenproperty(l,"Technology",2)
     sethiddenproperty(t,"Decoration",false)
 end
