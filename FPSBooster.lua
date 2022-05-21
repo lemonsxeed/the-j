@@ -98,6 +98,10 @@ if _G.Settings["Legacy Lighting"] or (_G.Settings.Other and _G.Settings.Other["L
     sethiddenproperty(game:GetService("Lighting"),"Technology",0)
     sethiddenproperty(game:GetService("Terrain"),"Decoration",false)
 end
+if _G.Settings["Streaming Enabled"] or (_G.Settings.Other and _G.Settings.Other["Streaming Enabled"]) then
+    if not sethiddenproperty then return end
+    sethiddenproperty(workspace,"StreamingEnabled",true)
+end
 
 local Descendants = ReturnDescendants()
 local WaitNumber = 500
