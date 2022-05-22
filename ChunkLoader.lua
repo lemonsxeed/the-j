@@ -17,7 +17,7 @@ local Iteration = 1
 
 for i,v in pairs(workspace:GetDescendants()) do
 	if v.ClassName == "Model" or v.ClassName == "Part" or v.ClassName == "MeshPart" then
-		if v.Parent.ClassName ~= "Model" or v.ClassName == "Model" then
+		if v.Parent.ClassName ~= "Model" or v.ClassName == "Model" and v.Parent.Name ~= game:GetService("Players").LocalPlayer.Name or v.Name ~= game:GetService("Players").LocalPlayer.Name then
 			Instances += 1
 			table.insert(Table, v)
 		end
