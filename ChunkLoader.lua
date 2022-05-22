@@ -51,6 +51,9 @@ local function GenerateChunks()
 		if i < math.floor((Instances/Distance)*Iteration) then
 			v.Parent = ChunkGroup["Chunk"..Iteration]
 			LoadedChunks += 1
+		elseif i > math.floor((Instances/Distance)*Iteration) then
+			v.Parent = ChunkGroup["Chunk"..Iteration]
+			LoadedChunks += 1
 		end
 	end
 end
