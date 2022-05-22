@@ -7,7 +7,7 @@ local Instances = 0
 local Iteration = 0
 
 for i,v in pairs(workspace:GetDescendants()) do
-	if v.ClassName == "Model" then
+	if v.ClassName == "Model" or v.ClassName == "Part" or v.ClassName == "MeshPart" then
 		Instances += 1
 		table.insert(Table, v)
 	end
@@ -49,6 +49,13 @@ end
 GenerateChunks()
 
 repeat wait() until LoadedChunks == Instances or LoadedChunks >= Instances-1
+
+for i,v in pairs(ChunkGroup:GetChildren()) do
+	if v.ClassName == "Model" then
+		Instances += 1
+		table.insert(Chunks, v)
+	end
+end
 
 local ReverseChunks = {}
 local ChunkBounds = {}
