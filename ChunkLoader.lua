@@ -17,8 +17,10 @@ local Iteration = 1
 
 for i,v in pairs(workspace:GetDescendants()) do
 	if v.ClassName == "Model" or v.ClassName == "Part" or v.ClassName == "MeshPart" then
-		Instances += 1
-		table.insert(Table, v)
+		if v.Parent.ClassName ~= "Model" or v.ClassName == "Model" then
+			Instances += 1
+			table.insert(Table, v)
+		end
 	end
 end
 
