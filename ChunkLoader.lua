@@ -1,11 +1,16 @@
-local Table = {}
 local Chunks = {}
-local Instances = 0
+local LoadedChunks = 0
 local Distance = 10
 
+local Table = {}
+local Instances = 0
+local Iteration = 0
+
 for i,v in pairs(workspace:GetDescendants()) do
-	Instances += 1
-	table.insert(Table, v)
+	if v.ClassName == "Model" then
+		Instances += 1
+		table.insert(Table, v)
+	end
 end
 
 local Chunk = Instance.new("Model")
@@ -19,15 +24,31 @@ for index = 1,Distance do
 	Chunk_.Parent = ChunkGroup
 end
 
-for i,v in pairs(Table) do
-	for index = 1,Distance do
-		if i < (Instances/Distance)*index then
-			v.Parent = ChunkGroup["Chunk"..index]
+local function IterateNumber()
+	spawn(function()
+		while true do
+			wait()
+			if Iteration > (Distance-1) then Iteration = 0 end
+			Iteration = Iteration + 1
+		end
+	end)
+end
+
+local function GenerateChunks()
+	IterateNumber()
+
+	for i,v in pairs(Table) do
+		wait()
+		if i < math.floor((Instances/Distance)*Iteration) then
+			v.Parent = ChunkGroup["Chunk"..Iteration]
+			LoadedChunks += 1
 		end
 	end
 end
 
-repeat wait() until ChunkGroup:GetChildren()[Distance]
+GenerateChunks()
+
+repeat wait() until LoadedChunks == Instances or LoadedChunks >= Instances-1
 
 local ReverseChunks = {}
 local ChunkBounds = {}
@@ -47,7 +68,7 @@ for Name,ChunkTable in pairs(Chunks) do
 	for _,ChunkId in pairs(ChunkTable) do
 		ReverseChunks[Name][ChunkId] = true
 	end
-	
+
 	local Position,Size = Model:GetModelCFrame().p,Model:GetExtentsSize()
 	local PosX,PosZ = Position.X,Position.Z
 	local SizeX,SizeZ = Size.X/2,Size.Z/2
@@ -78,13 +99,13 @@ local function UpdateRenderedChunks(ChunkName)
 			SetChunkVisible(OtherChunkName,false)
 		end
 	end
-	
+
 	for OtherChunkName,_ in pairs(ChunkData) do
 		if ChunksVisible[OtherChunkName] ~= true then
 			SetChunkVisible(OtherChunkName,true)
 		end
 	end
-	
+
 	if ChunksVisible[ChunkName] ~= true then
 		SetChunkVisible(ChunkName,true)
 	end
