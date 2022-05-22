@@ -1,6 +1,15 @@
-local Chunks = {}
+local Chunks = {
+	Chunk1 = {"Chunk2","Chunk3"},
+	Chunk2 = {"Chunk1","Chunk4","Chunk6"},
+	Chunk3 = {"Chunk1","Chunk4","Chunk5"},
+	Chunk4 = {"Chunk2","Chunk3","Chunk5","Chunk6"},
+	Chunk5 = {"Chunk3","Chunk4","Chunk7"},
+	Chunk6 = {"Chunk2","Chunk4","Chunk7"},
+	Chunk7 = {"Chunk5","Chunk6"},	
+}
+
 local LoadedChunks = 0
-local Distance = 10
+local Distance = 7
 
 local Table = {}
 local Instances = 0
@@ -49,12 +58,6 @@ end
 GenerateChunks()
 
 repeat wait() until LoadedChunks == Instances or LoadedChunks >= Instances-1
-
-for i,v in pairs(ChunkGroup:GetChildren()) do
-	if v.ClassName == "Model" then
-		table.insert(Chunks, v)
-	end
-end
 
 local ReverseChunks = {}
 local ChunkBounds = {}
