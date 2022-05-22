@@ -23,7 +23,8 @@ _G.Settings = {
     ["Low Rendering"] = true, -- Lower Rendering
     ["Low Quality Parts"] = true, -- Lower quality parts
     ["Legacy Lighting"] = true, -- Changes the Lighting Technology into Legacy
-    ["Streaming Enabled"] = true -- Enables StreamingEnabled, reduces memory usage.
+    ["Streaming Enabled"] = true, -- Enables StreamingEnabled, reduces memory usage
+    ["Chunk Loading"] = true -- Loads and unloads chunks you can't see, this setting is pretty unsafe
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/lemonsxeed/the-j/main/FPSBooster.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/lemonsxeed/the-j/main/FPSStabilizer.lua"))()
