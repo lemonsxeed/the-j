@@ -17,9 +17,14 @@ local Iteration = 1
 
 for i,v in pairs(workspace:GetDescendants()) do
 	if v.ClassName == "Model" or v.ClassName == "Part" or v.ClassName == "MeshPart" then
-		if v.Parent.ClassName ~= "Model" or v.ClassName == "Model" and v.Parent.Name ~= game:GetService("Players").LocalPlayer.Name or v.Name ~= game:GetService("Players").LocalPlayer.Name then
-			Instances += 1
-			table.insert(Table, v)
+		if v.Parent.ClassName ~= "Model" or v.ClassName == "Model" and (v.Parent.Name ~= game:GetService("Players").LocalPlayer.Name or v.Name ~= game:GetService("Players").LocalPlayer.Name) then
+			if (v.Locked.Parent ~= true) and (v.ClassName == "Part" or v.ClassName == "MeshPart") and (v.Parent.ClassName == "Part" or v.Parent.ClassName == "MeshPart") or v.ClassName == "Model" then
+				Instances += 1
+				table.insert(Table, v)
+			elseif (v.Locked ~= true) and (v.ClassName == "Part" or v.ClassName == "MeshPart") or v.ClassName == "Model" then
+				Instances += 1
+				table.insert(Table, v)
+			end
 		end
 	end
 end
