@@ -52,7 +52,6 @@ repeat wait() until LoadedChunks == Instances or LoadedChunks >= Instances-1
 
 for i,v in pairs(ChunkGroup:GetChildren()) do
 	if v.ClassName == "Model" then
-		Instances += 1
 		table.insert(Chunks, v)
 	end
 end
