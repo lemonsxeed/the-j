@@ -13,7 +13,7 @@ local Distance = 7
 
 local Table = {}
 local Instances = 0
-local Iteration = 0
+local Iteration = 1
 
 for i,v in pairs(workspace:GetDescendants()) do
 	if v.ClassName == "Model" or v.ClassName == "Part" or v.ClassName == "MeshPart" then
