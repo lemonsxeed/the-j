@@ -62,7 +62,7 @@ end
 
 GenerateChunks()
 
-repeat wait() until LoadedChunks == Instances or LoadedChunks >= Instances-1
+repeat wait() until LoadedChunks == Instances and ChunkGroup:GetChildren[Distance]
 
 local ReverseChunks = {}
 local ChunkBounds = {}
