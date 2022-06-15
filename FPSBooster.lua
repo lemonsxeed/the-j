@@ -97,7 +97,7 @@ end
 if _G.Settings.Lighting.Technology then
     sethiddenproperty(game:GetService("Lighting"), "Technology", _G.Settings.Lighting.Technology)
 end
-if  _G.Settings.Terrain.Decoration and _G.Settings.Terrain.Decoration == false then
+if _G.Settings.Terrain.Decoration and _G.Settings.Terrain.Decoration == false then
     sethiddenproperty(workspace:FindFirstChildOfClass("Terrain"), "Decoration", false)
 end
 
