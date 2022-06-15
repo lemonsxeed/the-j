@@ -92,7 +92,7 @@ if _G.Settings["No Shadows"] or (_G.Settings.Other and _G.Settings.Other["No Sha
 end
 if _G.Settings["Low Rendering"] or (_G.Settings.Other and _G.Settings.Other["Low Rendering"]) then
     settings().Rendering.QualityLevel = 1
-    game.RunService:Set3dRenderingEnabled(false)
+    game:GetService("RunService"):Set3dRenderingEnabled(false)
 end
 if _G.Settings["Legacy Lighting"] or (_G.Settings.Other and _G.Settings.Other["Legacy Lighting"]) then
     if not sethiddenproperty then return end
