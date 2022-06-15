@@ -94,10 +94,11 @@ if _G.Settings["Low Rendering"] or (_G.Settings.Other and _G.Settings.Other["Low
     settings().Rendering.QualityLevel = 1
     game:GetService("RunService"):Set3dRenderingEnabled(false)
 end
-if _G.Settings["Legacy Lighting"] or (_G.Settings.Other and _G.Settings.Other["Legacy Lighting"]) then
-    if not sethiddenproperty then return end
-    sethiddenproperty(game:GetService("Lighting"),"Technology",0)
-    sethiddenproperty(workspace:FindFirstChildOfClass("Terrain"),"Decoration",false)
+if _G.Settings.Lighting.Technology then
+    sethiddenproperty(game:GetService("Lighting"), "Technology", _G.Settings.Lighting.Technology)
+end
+if  _G.Settings.Terrain.Decoration and _G.Settings.Terrain.Decoration == false then
+    sethiddenproperty(workspace:FindFirstChildOfClass("Terrain"), "Decoration", false)
 end
 
 local Descendants = ReturnDescendants()
