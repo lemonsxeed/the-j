@@ -95,7 +95,7 @@ if _G.Settings["Low Rendering"] or (_G.Settings.Other and _G.Settings.Other["Low
     game:GetService("RunService"):Set3dRenderingEnabled(false)
 end
 if _G.Settings.Lighting.Technology then
-    sethiddenproperty(game:GetService("Lighting"), "Technology", _G.Settings.Lighting.Technology)
+    sethiddenproperty(game:GetService("Lighting"), "Technology", _G.Settings.Lighting.Technology or 0)
 end
 if _G.Settings.Terrain.Decoration and _G.Settings.Terrain.Decoration == false then
     sethiddenproperty(workspace:FindFirstChildOfClass("Terrain"), "Decoration", false)
