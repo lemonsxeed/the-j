@@ -92,18 +92,12 @@ if _G.Settings["No Shadows"] or (_G.Settings.Other and _G.Settings.Other["No Sha
 end
 if _G.Settings["Low Rendering"] or (_G.Settings.Other and _G.Settings.Other["Low Rendering"]) then
     settings().Rendering.QualityLevel = 1
+    game.RunService:Set3dRenderingEnabled(false)
 end
 if _G.Settings["Legacy Lighting"] or (_G.Settings.Other and _G.Settings.Other["Legacy Lighting"]) then
     if not sethiddenproperty then return end
     sethiddenproperty(game:GetService("Lighting"),"Technology",0)
     sethiddenproperty(workspace:FindFirstChildOfClass("Terrain"),"Decoration",false)
-end
-if _G.Settings["Streaming Enabled"] or (_G.Settings.Other and _G.Settings.Other["Streaming Enabled"]) then
-    if not sethiddenproperty then return end
-    sethiddenproperty(workspace,"StreamingEnabled",true)
-end
-if _G.Settings["Chunk Loading"] or (_G.Settings.Other and _G.Settings.Other["Chunk Loading"]) then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/lemonsxeed/the-j/main/ChunkLoader.lua"))()
 end
 
 local Descendants = ReturnDescendants()
